@@ -2,6 +2,8 @@ package code;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.List;
+import java.util.LinkedList;
 
 public class Main {
 
@@ -53,4 +55,27 @@ public class Main {
 			System.out.println(str.get(i));
 		}
 	}
+	  public LinkedList<String> Splice(ArrayList<String> children){
+	  ArrayList<String> splicedfront = new ArrayList<String>();
+	  ArrayList<String> splicedback = new ArrayList<String>();
+	  ArrayList<String> splicedproduct = new ArrayList<String>();
+	  //List<String> splicelist = new List<String>();
+	  for (int element = 0; element < 4; element++) {
+		  ArrayList<String> splicedf = new ArrayList<String>(children.subList(0, 2));
+		  //creates a sublist of spliced lists
+		  splicedfront.addAll(splicedf);
+		  //List<String> splicelist = children.subList(0, 5);
+		  ArrayList<String> splicedb = new ArrayList<String>(children.subList(3, 5));
+		  splicedback.addAll(splicedb);
+		  //adds spliced sublists to an arraylist spliced product
+		  //TODO need to write the merge functions
+	  }
+	  for (int i = 0; i<splicedfront.size(); i++){
+		  String indexf = splicedfront.get(i);
+		  String indexb = splicedback.get(i);
+		  indexf = indexf.concat(indexb);
+		  splicedproduct.set(i, indexf);
+		  
+	  }
+  }
 }
