@@ -55,27 +55,73 @@ public class Main {
 			System.out.println(str.get(i));
 		}
 	}
-	  public LinkedList<String> Splice(ArrayList<String> children){
-	  ArrayList<String> splicedfront = new ArrayList<String>();
-	  ArrayList<String> splicedback = new ArrayList<String>();
-	  ArrayList<String> splicedproduct = new ArrayList<String>();
+	  public LinkedList<String> Splice(ArrayList<List<String>> children){
+	  ArrayList<List<String>> splicedfront = new ArrayList<List<String>>();
+	  ArrayList<List<String>> splicedback = new ArrayList<List<String>>();
+	  ArrayList<List<String>> splicedproduct = new ArrayList<List<String>>();
+	  
+	  ArrayList<List<String>> indexf = new ArrayList<List<String>>();
+	  ArrayList<List<String>> indexb = new ArrayList<List<String>>();
 	  //List<String> splicelist = new List<String>();
+	  int x = rand.nextInt(3)+1;
 	  for (int element = 0; element < 4; element++) {
-		  ArrayList<String> splicedf = new ArrayList<String>(children.subList(0, 2));
+		  ArrayList<List<String>> splicedf = new ArrayList<List<String>>();
+		  splicedf.add(children.get(element).subList(0, x));
 		  //creates a sublist of spliced lists
 		  splicedfront.addAll(splicedf);
 		  //List<String> splicelist = children.subList(0, 5);
-		  ArrayList<String> splicedb = new ArrayList<String>(children.subList(3, 5));
+		  ArrayList<List<String>> splicedb = new ArrayList<List<String>>();
+		  splicedb.add(children.get(element).subList(x+1, 5));
 		  splicedback.addAll(splicedb);
 		  //adds spliced sublists to an arraylist spliced product
 		  //TODO need to write the merge functions
 	  }
+	  //merge function
 	  for (int i = 0; i<splicedfront.size(); i++){
-		  String indexf = splicedfront.get(i);
-		  String indexb = splicedback.get(i);
-		  indexf = indexf.concat(indexb);
-		  splicedproduct.set(i, indexf);
+		  int randelement = rand.nextInt(splicedfront.size());
+		  indexf.add(splicedfront.get(i));
+		  indexb.add(splicedback.get(randelement));
+		  for(List<String> element:splicedfront){
+			  List<String> buffer = new ArrayList<String>();
+			  for(String e: element){
+				  buffer.add(e);
+			  }
+			  for(String e: splicedback.get(0)){
+				  buffer.add(e);
+			  }
+			  splicedproduct.add(buffer);
+			  splicedback.remove(0);
+		  }
 		  
+			  
+			  
+		  }
+		  		  
 	  }
-  }
+	  
+	  public ArrayList<List<String>> retInOrder(ArrayList<List<String>> Lof(int start,int goal){
+  			for(LinkedList<String> los:lofl){
+  				int soFar = start;
+  				for(String s:los){
+  					soFar = operate(soFar,s);
+  					if(soFar == goal){
+  						break;
+  					}
+  					los.addLast(Math.abs(soFar-goal).ToString());
+		  }
+		ArrayList<List<String>> retList = new ArrayList<List<String>>();
+		while(lofl.size()>0){
+			int lowdiff = Integer.MAX_VALUE;
+				for(LinkedList<String> los:lofl){
+					if(los.getLast()<lowdiff){
+						lowdiff = los.getLast();
+						addNext = los;
+				}	
+		}
+				retlist.AddLast(addNext);
+				lofl.remove(addNext);
+		}
+		return retlist;
+  			}
+  		}
 }
